@@ -1,0 +1,1 @@
+Guarde aquí el archivo DRALA_backup_FECHA_HORA.sql descargado desde backup_database.php.

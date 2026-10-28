@@ -1,0 +1,52 @@
+PLANIFICADOR GANTT DRALA – V5.2 COMPLETA / PORTABLE
+========================================================
+
+CONTENIDO
+- Dashboard profesional.
+- Plan de tareas completo con 25 campos operativos.
+- Carta Gantt semanal tipo Excel.
+- Administradores y usuarios.
+- Más de un administrador.
+- Nombre, correo y departamento/unidad por usuario.
+- Listas desplegables editables y creación de nuevas listas.
+- Trazabilidad de creación y modificaciones.
+- Historial de cambios de fechas.
+- Conservación del plazo original y ampliaciones.
+- Alertas por vencimiento.
+- Recuperación/cambio de contraseña mediante correo.
+- Permisos diferenciados administrador/usuario.
+
+IMPORTANTE SOBRE ESTA COPIA
+Esta carpeta contiene el PROGRAMA COMPLETO, pero NO contiene la contraseña real
+de MySQL ni una copia de los registros actuales de su base de datos.
+Para trasladar también usuarios, tareas, historial y catálogos actuales debe
+exportar la base MySQL desde phpMyAdmin en formato SQL.
+
+MIGRACIÓN A OTRO SERVIDOR / EQUIPO
+1. Exporte la base de datos actual desde phpMyAdmin:
+   Exportar > método Rápido > formato SQL > Continuar.
+2. Guarde ese archivo .sql junto a esta copia, pero manténgalo protegido porque
+   puede contener datos internos.
+3. En el nuevo servidor cree una base MySQL vacía.
+4. Importe el archivo .sql exportado.
+5. Suba todos los archivos de esta carpeta al directorio web (por ejemplo htdocs).
+6. Copie config.example.php como config.php.
+7. Edite config.php con HOST, BASE, USUARIO y CONTRASEÑA del NUEVO servidor.
+8. Configure mail_config.php con el correo/remitente admitido por el nuevo hosting.
+9. No ejecute migrate_v5.php si importó una base que ya estaba actualizada a V5.
+10. Elimine migrate_v5.php del servidor público una vez confirmada la instalación.
+11. Ingrese por login.php y verifique Dashboard, Plan de tareas, Carta Gantt y Administración.
+
+SI PARTE CON UNA BASE ANTIGUA
+Use migrate_v5.php una sola vez después de configurar config.php y luego elimínelo.
+
+ARCHIVOS SENSIBLES
+- config.php: contiene credenciales MySQL. No se incluye con credenciales reales.
+- mail_config.php: revise el remitente antes de usarlo.
+- Los respaldos SQL pueden contener usuarios, correos, tareas e historial.
+
+RECOMENDACIÓN
+Conserve dos archivos de respaldo:
+A) Planificador_Gantt_DRALA_V5_2_COMPLETO.zip
+B) respaldo_base_datos_YYYY-MM-DD.sql
+Con ambos puede reconstruir el sistema en otro hosting/equipo.

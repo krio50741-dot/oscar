@@ -1,0 +1,73 @@
+PLANIFICADOR GANTT DRALA — V6.0 PORTABLE COMPLETO
+==================================================
+
+OBJETIVO
+Esta carpeta está preparada para guardarse en un pendrive, enviarse por correo
+o conservarse como copia maestra para instalar el sistema en otro hosting/equipo.
+
+IMPORTANTE: HAY DOS PARTES EN UNA COPIA COMPLETA
+1) ARCHIVOS DEL SISTEMA: contenidos en esta carpeta.
+2) BASE DE DATOS: contiene usuarios, tareas, historial, catálogos y demás datos.
+   Debe respaldarse por separado en formato .sql.
+
+ANTES DE MIGRAR DESDE EL SITIO ACTUAL
+-------------------------------------
+1. Ingrese como Administrador.
+2. Abra en el navegador:
+   backup_database.php
+3. Se descargará un archivo similar a:
+   DRALA_backup_2026-10-26_20-30-00.sql
+4. Guarde ese .sql junto a este ZIP en su pendrive/copia segura.
+
+INSTALAR EN OTRO HOSTING/SERVIDOR
+---------------------------------
+1. Crear una base MySQL vacía.
+2. Importar el archivo DRALA_backup_....sql mediante phpMyAdmin.
+3. Subir todos los archivos de esta carpeta al directorio público del nuevo sitio.
+4. Copiar config.example.php como config.php.
+5. Editar SOLO config.php e ingresar:
+   - servidor MySQL
+   - nombre de la base
+   - usuario MySQL
+   - contraseña MySQL
+6. Si utiliza recuperación/envío de correos:
+   copiar mail_config.example.php como mail_config.php y configurar el correo.
+7. Abrir el nuevo sitio e iniciar sesión con los usuarios restaurados.
+
+REQUISITOS DEL SERVIDOR
+-----------------------
+- PHP con PDO MySQL.
+- MySQL/MariaDB.
+- Extensión ZipArchive para la función Sincronizar Excel.
+- SimpleXML.
+- Sesiones PHP.
+- HTTPS recomendado.
+
+CONTENIDO DESTACADO V6.0
+------------------------
+- Inicio de sesión y recuperación de contraseña.
+- Logo Aduanas transparente.
+- Dashboard.
+- Plan de tareas.
+- Carta Gantt.
+- Informes y descargas.
+- Ayuda.
+- Administración de usuarios/listas.
+- Historial de cambios.
+- Sincronización Excel offline -> aplicación.
+- Plantilla Excel offline.
+- Respaldo SQL desde backup_database.php.
+
+SEGURIDAD
+---------
+Este paquete NO contiene la contraseña real de la base de datos.
+config.php no se distribuye; se incluye config.example.php.
+No envíe por correo un respaldo SQL sin protección si contiene datos reales.
+Después de descargar una copia SQL desde el sitio, guárdela en un lugar seguro.
+
+NOTA SOBRE USO EN UN PC SIN SERVIDOR
+------------------------------------
+Copiar esta carpeta al escritorio o pendrive NO ejecuta por sí sola la aplicación.
+La aplicación PHP necesita un servidor web con PHP + MySQL.
+La planilla Excel sí puede utilizarse sin Internet. Luego se sincroniza al sitio
+cuando vuelve la conexión.

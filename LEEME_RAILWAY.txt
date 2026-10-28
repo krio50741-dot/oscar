@@ -1,0 +1,52 @@
+PLANIFICADOR GANTT DRALA V6.0 — EDICIÓN RAILWAY
+===================================================
+
+Esta edición adapta el programa portable entregado para ejecutarse en Railway con PHP 8.3 + Apache + MySQL.
+
+ARCHIVOS RAILWAY AGREGADOS
+- Dockerfile
+- railway.toml
+- docker/000-default.conf
+- config.php (lee variables Railway; no contiene contraseñas)
+- database_railway.sql (estructura nueva para instalación desde cero)
+- setup_railway.php
+- health.php
+
+DESPLIEGUE
+1. Cree un repositorio PRIVADO en GitHub y suba el contenido de esta carpeta.
+2. En Railway cree un proyecto y agregue un servicio MySQL.
+3. Agregue un servicio desde el repositorio GitHub.
+4. En Variables del servicio web vincule:
+   MYSQLHOST     = ${{MySQL.MYSQLHOST}}
+   MYSQLPORT     = ${{MySQL.MYSQLPORT}}
+   MYSQLUSER     = ${{MySQL.MYSQLUSER}}
+   MYSQLPASSWORD = ${{MySQL.MYSQLPASSWORD}}
+   MYSQLDATABASE = ${{MySQL.MYSQLDATABASE}}
+   SETUP_ENABLED = 1
+   APP_TIMEZONE  = America/Santiago
+   (Si su servicio MySQL tiene otro nombre, reemplace “MySQL” por ese nombre.)
+5. Genere el dominio público del servicio web.
+6. Abra https://SU-DOMINIO/setup_railway.php
+7. Cree el primer administrador.
+8. Verifique login.php, Dashboard, Plan de tareas, Gantt, Administración y Auditoría.
+9. Cambie SETUP_ENABLED=0 y redeploy.
+
+MIGRACIÓN DE DATOS EXISTENTES
+El ZIP portable original NO contiene el respaldo SQL real de la base actual.
+Si quiere conservar usuarios, tareas, catálogos, auditoría e historial existentes:
+- exporte la base actual desde phpMyAdmin en formato SQL;
+- impórtela en el MySQL de Railway.
+No ejecute setup_railway.php sobre una base ya importada salvo que sepa que la estructura es compatible.
+
+EXCEL OFFLINE
+Se mantiene templates/Carta_Gantt_DRALA_Offline.xlsx y la sincronización desde import_excel.php.
+
+CORREO
+El programa portable usa mail() de PHP. Railway no debe considerarse configurado para correo solo por desplegar el contenedor.
+Para recuperación de contraseña y alertas automáticas, configure posteriormente un proveedor SMTP/API.
+
+SEGURIDAD
+- No suba credenciales a GitHub.
+- Use repositorio privado.
+- Después de instalar, SETUP_ENABLED=0.
+- Los respaldos SQL pueden contener información interna; no los publique.

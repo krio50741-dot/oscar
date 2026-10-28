@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 118" role="img" aria-label="Aduanas Chile">
+<rect width="420" height="118" fill="none"/>
+<g transform="translate(4 5)">
+  <path d="M48 2 L89 16 V49 C89 76 72 95 48 106 C24 95 7 76 7 49 V16 Z" fill="#ffffff" stroke="#0b3f6b" stroke-width="4"/>
+  <path d="M48 10 L80 21 V48 C80 69 67 84 48 94 C29 84 16 69 16 48 V21 Z" fill="#0b3f6b"/>
+  <path d="M48 21l6.2 12.7 14 2-10.1 9.8 2.4 13.9L48 52.8 35.5 59.4l2.4-13.9-10.1-9.8 14-2z" fill="#fff"/>
+  <path d="M29 67h38" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M35 76h26" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+</g>
+<g fill="#0b3f6b" font-family="Arial, Helvetica, sans-serif">
+  <text x="112" y="37" font-size="25" font-weight="700" letter-spacing="1.1">ADUANAS</text>
+  <text x="112" y="65" font-size="25" font-weight="700" letter-spacing="1.1">CHILE</text>
+  <text x="112" y="88" font-size="12" font-weight="700" letter-spacing="3.2">CUSTOMS</text>
+  <text x="247" y="38" font-size="12" font-weight="700">SERVICIO NACIONAL</text>
+  <text x="247" y="56" font-size="12" font-weight="700">DE ADUANAS</text>
+  <text x="247" y="82" font-size="10" fill="#657b8e">Gobierno de Chile</text>
+</g>
+</svg>
