@@ -7,23 +7,35 @@ function envv(string $k,string $default=''): string {
     $v=getenv($k);
     return ($v===false || $v==='') ? $default : (string)$v;
 }
+
 function db(): PDO {
-    static $pdo=null;
-    if($pdo===null){
-        $host=envv('MYSQLHOST',envv('DB_HOST','127.0.0.1'));
-        $port=envv('MYSQLPORT',envv('DB_PORT','3306'));
-        $name=envv('MYSQLDATABASE',envv('DB_NAME','railway'));
-        $user=envv('MYSQLUSER',envv('DB_USER','root'));
-        $pass=envv('MYSQLPASSWORD',envv('DB_PASS',''));
-        $dsn="mysql:host={$host};port={$port};dbname={$name};charset=utf8mb4";
-        $pdo=new PDO($dsn,$user,$pass,[
-            PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES=>false,
+    static $pdo = null;
+
+    if ($pdo === null) {
+        $host = getenv('MYSQLHOST');
+        $port = getenv('MYSQLPORT');
+        $name = getenv('MYSQLDATABASE');
+        $user = getenv('MYSQLUSER');
+        $pass = getenv('MYSQLPASSWORD');
+
+        if (!$host || !$port || !$name || !$user || $pass === false || $pass === '') {
+            throw new RuntimeException(
+                'Faltan variables de conexión MySQL en Railway.'
+            );
+        }
+
+        $dsn = "mysql:host={$host};port={$port};dbname={$name};charset=utf8mb4";
+
+        $pdo = new PDO($dsn, $user, $pass, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
         ]);
     }
+
     return $pdo;
 }
+
 function h($v): string { return htmlspecialchars((string)$v,ENT_QUOTES,'UTF-8'); }
 function require_login(): void { if(empty($_SESSION['uid'])){header('Location:login.php');exit;} }
 function admin(): bool { return ($_SESSION['role']??'')==='admin'; }
